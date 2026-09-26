@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Print Specific Rules for True 1-Page / 2-Page ATS Document Printing */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #111827 !important;
+    font-size: 10pt;
+    line-height: 1.25;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  /* Full A4 single-page container rule (210mm x 297mm full page fit with no borders or footer lines) */
+  .single-page-a4-fit {
+    width: 210mm !important;
+    max-width: 210mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    height: 297mm !important;
+    overflow: hidden !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .page-break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .page-break-after-always {
+    break-after: page;
+    page-break-after: always;
+  }
+
+  /* Ensure card backgrounds and borders print with high fidelity */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: inherit !important;
+  }
+}
+
+.exporting-pdf,
+.exporting-image {
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+@media screen {
+  .print-only {
+    display: none !important;
+  }
+}
